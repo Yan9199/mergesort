@@ -1,5 +1,6 @@
 package impl;
 
+import impl.functions.ConstantListToIntFunction;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestMergeSort {
 
-    private static final Comparator<Integer> CMP = Comparator.naturalOrder();
+    static final Comparator<Integer> CMP = Comparator.naturalOrder();
 
     @Test
     void testMergeSort() {
@@ -23,9 +24,11 @@ public class TestMergeSort {
 
         List<Integer> expected = toSort.stream().sorted(CMP).toList();
 
-        MergeSort<Integer> collections = new MergeSort<>(list -> 3, CMP);
+        ConstantListToIntFunction<Integer> c = new ConstantListToIntFunction<>(4);
 
-        collections.sort(toSort);
+        MergeSort<Integer> m = new MergeSort<>(c, CMP);
+
+        m.sort(toSort);
 
         assertEquals(expected, toSort);
     }
