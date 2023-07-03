@@ -17,14 +17,19 @@ public class FunctionOnRatioOfInversions<T> extends FunctionOnDegreeOfDisorder<T
      * @param function the function to be applied to the ratio of runs
      */
     public FunctionOnRatioOfInversions(Comparator<? super T> cmp, DoubleToIntFunction function) {
-        super(cmp); this.function = function;
+        super(cmp);
+        this.function = function;
     }
 
     @Override
     public int apply(List<T> elements) {
         if (elements == null) throw new NullPointerException();
         int size = elements.size(), maxInversions = (size - 1) * size / 2, inversions = 0;
-        for (int i = 0; i < size; i++) {T current = elements.get(i); for (int index = i + 1; index < size; index++) if (cmp.compare(current, elements.get(index)) > 0) inversions++;}
+        for (int i = 0; i < size; i++) {
+            T current = elements.get(i);
+            for (int index = i + 1; index < size; index++)
+                if (cmp.compare(current, elements.get(index)) > 0) inversions++;
+        }
         return function.apply((double) inversions / maxInversions);
     }
 }

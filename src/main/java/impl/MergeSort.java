@@ -72,7 +72,8 @@ public class MergeSort<T> {
         int elements = 0, optimalSize = 1;
         for (ListItem<T> p = head, next = head.next; next != null; next = (p = next).next, elements++)
             if (cmp.compare(p.key, next.key) > 0) {
-                if ((elements += ListItem.getSequenceLength(p)) <= threshold) return selectionSortInPlace(head, elements);
+                if ((elements += ListItem.getSequenceLength(p)) <= threshold)
+                    return selectionSortInPlace(head, elements);
                 int count = 1, max = elements;
                 for (ListItem<T> n = next, h = p; n != null; n = (h = n).next, count++)
                     if (cmp.compare(h.key, n.key) > 0) {
@@ -142,9 +143,9 @@ public class MergeSort<T> {
     /**
      * Relocates the maximum of the sublist to its end.
      *
-     * @param head the list to sort
+     * @param head     the list to sort
      * @param maxIndex the index of the max item to be relocated
-     * @param end the index for the end of the sublist
+     * @param end      the index for the end of the sublist
      * @return the list with the max item relocated to the end of the sublist
      */
     private ListItem<T> relocateMax(ListItem<T> head, int maxIndex, int end) {

@@ -19,7 +19,8 @@ public class LinearDoubleToIntFunction implements DoubleToIntFunction {
      * @param b the f_1 coefficient
      */
     public LinearDoubleToIntFunction(double a, double b) {
-        this.a = a; this.b = b;
+        this.a = a;
+        this.b = b;
     }
 
     @Override

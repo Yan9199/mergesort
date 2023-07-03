@@ -31,8 +31,8 @@ public class ListItem<T> {
      * Returns the length of the given list.
      *
      * @param head the list
+     * @param <T>  the type parameter of the list
      * @return the length of the list
-     * @param <T> the type parameter of the list
      */
     public static <T> int getSequenceLength(ListItem<T> head) {
         int sequenceLength = 0;
